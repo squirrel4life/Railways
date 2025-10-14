@@ -1,0 +1,18 @@
+﻿@model Railways.Trains
+
+
+@{
+    ViewBag.Title = "Вагони";
+    Tickets t = (Tickets)Session["ticket"];
+}
+
+<h2>Поїзд @Model.Route</h2>
+<p>На дату @t.DateTrip.ToString("d")</p>
+
+@foreach(var carr in @Model.Carriages)
+{
+           
+        @Html.Action("ShowSeats", "Carriages", new { id = carr.CarriageID })
+    
+}
+   

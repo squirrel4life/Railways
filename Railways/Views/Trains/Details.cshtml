@@ -1,0 +1,36 @@
+﻿@model Railways.Trains
+
+@{
+    ViewBag.Title = "Інформація про поїзд";
+}
+
+<h2>Інформація про поїзд</h2>
+
+<div>    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Route)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <p>Детальний маршрут</p>
+    @Html.Action("ShowFullPath", "Routes", new { trainID = Model.TrainID })
+</div>
+
+<p>   
+    @Html.ActionLink("До списку поїздів", "Index")
+</p>

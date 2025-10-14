@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Railways.Tickets>
+
+@{
+    ViewBag.Title = "Мої квитки";
+}
+
+<h2>Мої квитки</h2>
+
+<p>
+    @Html.ActionLink("Замовити ще", "Input", "Trains")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carriages.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carriages.CarriageTypes.TypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passengers.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passengers.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trains.Number)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTrip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carriages.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carriages.CarriageTypes.TypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passengers.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passengers.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stations.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stations1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trains.Number)
+        </td>
+        <td>
+            @if(DateTime.Now.Date < item.DateTrip.Date)
+            {
+                Html.ActionLink("Відмовитись", "Delete", new { id = item.TicketID });
+            }
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("До особистого кабінету", "MyProfile", "Account")
+</p>

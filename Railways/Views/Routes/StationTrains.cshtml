@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Railways.Routes>
+@{
+    ViewBag.Title = "Список поїздів, що проходять через станцію " + ViewBag.StationName;
+}
+
+<h2>Список поїздів, що проходять через станцію @ViewBag.Stationname </h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Trains.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trains.Route)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trains.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trains.Route)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+           
+        </tr>
+    }
+
+</table>

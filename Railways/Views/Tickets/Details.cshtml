@@ -1,0 +1,109 @@
+﻿@model Railways.Tickets
+
+@{
+    ViewBag.Title = "Замовлення";
+    RailwayTicketOfficeDBEntities1 db = new RailwayTicketOfficeDBEntities1();
+}
+
+
+
+<div>
+    <h4>Замовлення квитка</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carriages.Number)
+        </dt>
+
+        <dd>
+            @db.Carriages.Find(Model.CarriageID).Number
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carriages.CarriageTypes.TypeName)
+        </dt>
+
+        <dd>
+            @db.Carriages.Find(Model.CarriageID).CarriageTypes.TypeName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passengers.FirstName)
+        </dt>
+
+        <dd>
+           @db.Passengers.Find(Model.PassengerID).FirstName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passengers.LastName)
+        </dt>
+
+        <dd>
+            @db.Passengers.Find(Model.PassengerID).LastName
+        </dd>
+
+        <dt>
+            Звідки
+        </dt>
+
+        <dd>
+            @db.Stations.Find(Model.StartTrip).Name
+        </dd>
+
+        <dt>
+            Куди
+        </dt>
+
+        <dd>
+            @db.Stations.Find(Model.EndTrip).Name
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trains.Number)
+        </dt>
+
+        <dd>
+            @db.Trains.Find(Model.TrainID).Number
+        </dd>
+
+        
+
+    </dl>
+    @using(Html.BeginForm())
+    { 
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Замовити" class="btn btn-default" />
+        </div>
+    </div>
+    }
+
+</div>
+<p>
+    <a href="javascript: history.go(-1);">Назад</a>
+</p>

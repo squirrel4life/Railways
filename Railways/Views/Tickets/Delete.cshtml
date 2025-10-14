@@ -1,0 +1,95 @@
+﻿@model Railways.Tickets
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>Ви точно хочете повернути цей квиток?</h3>
+<div>
+    <h4>Tickets</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carriages.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carriages.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passengers.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passengers.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Passengers.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passengers.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stations.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stations1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trains.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trains.Number)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> | 
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

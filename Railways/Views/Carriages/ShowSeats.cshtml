@@ -1,0 +1,28 @@
+﻿@model Railways.Carriages
+
+@{
+    ViewBag.Title = "Місця";
+    List<int> bookedSeats = (List<int>)System.Web.HttpContext.Current.Session["BookedSeats"];
+}
+
+<h2>Вагон №@Model.Number (@Model.CarriageTypes.TypeName)</h2>
+<div>
+    <table cellspacing="4" cellpadding="2" title="Місця" border="1">
+        <tr>
+        @for (int i = 1; i <= @Model.CarriageTypes.SeatsCount; i++)
+        {
+           <td align="center">
+               @if(bookedSeats.Contains(i))
+               { 
+            <span style="color:firebrick">@i</span>
+               }
+               else { 
+               <span style="color:green">
+                   @Html.ActionLink(i.ToString(), "Details", "Tickets", new { carriageID = Model.CarriageID, seat = i},null)               
+               </span>
+               }
+           </td>
+        }
+            </tr>
+        </table>
+</div>

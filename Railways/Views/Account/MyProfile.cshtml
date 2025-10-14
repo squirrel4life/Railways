@@ -1,0 +1,84 @@
+﻿@model Railways.Models.ApplicationUser
+@{
+    ViewBag.Title = "Особистий кабінет";
+}
+
+<h2>Особистий кабінет</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+           Нікнейм
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            Ім'я
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+           Прізвище
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+           Країна
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+           Місто
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HomeTown)
+        </dd>
+
+        <dt>
+           Вік
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+           Телефон
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+           Кредитна картка
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreditCard)
+        </dd>
+
+        <dt>
+            Категорія
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInfo)
+        </dd>
+
+        <dt>
+            Про мене
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AboutMe)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редагувати", "EditProfile", "Account") | 
+    @Html.ActionLink("Подивитись мої квитки", "Index", "Tickets")
+</p>

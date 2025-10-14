@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "Пошук поїзда";
+}
+@model Railways.SearchPath
+
+<style>
+    #payt4 {
+        display: none;
+    }
+
+    [for="payt4"] {
+        display: inline-block;
+        padding: 7px;
+        border-radius: 100px;
+        background: rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .4) inset, 0 1px 1px 0 rgba(255, 255, 255, .1);
+        text-shadow: 0 1px rgba(0, 0, 0, .5);
+        cursor: pointer;
+    }
+
+        [for="payt4"]:before, [for="payt4"]:after {
+            display: inline-block;
+            padding: 5px 20px;
+        }
+
+        [for="payt4"]:before {
+            content: "ВИКЛ";
+            border-radius: 100px 0 0 100px;
+            background: rgba(0, 0, 0, .3) linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0));
+            color: rgba(0,0,0,.4);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .5) inset, 0 1px 0 rgba(255, 255, 255, .4);
+        }
+
+        [for="payt4"]:after {
+            content: "ВКЛ";
+            border-radius: 0 100px 100px 0;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
+            box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.2), 0 1px 2px 0 rgba(0,0,0,.5);
+        }
+
+    #payt4:checked ~ [for="payt4"]:after {
+        background: rgba(0, 0, 0, .3) linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0));
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .5) inset, 0 1px 0 rgba(255, 255, 255, .4);
+        color: rgba(0,0,0,.4);
+    }
+
+    #payt4:checked ~ [for="payt4"]:before {
+        box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.2), 0 1px 2px 0 rgba(0,0,0,.5);
+        background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
+        color: inherit;
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkboxFour {        
+        width: 40px;
+        height: 40px;
+        background: #ddd;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        margin-left: 0px;
+        margin-right: 90px;
+        border-radius: 100%;
+        position: relative;
+        -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    }
+
+        .checkboxFour label {
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 100px;
+            -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            -ms-transition: all .5s ease;
+            transition: all .5s ease;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 1;
+            background: #333;
+            -webkit-box-shadow: inset 0px 1px 3px rgba(0,0,0,0.5);
+            -moz-box-shadow: inset 0px 1px 3px rgba(0,0,0,0.5);
+            box-shadow: inset 0px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .checkboxFour input[type=checkbox]:checked + label {
+            background: #26ca28;
+        }
+</style>
+
+
+
+
+<h2>Пошук поїзда</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Start, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Start)
+                @Html.ValidationMessageFor(model => model.Start)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.End, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.End)
+                @Html.ValidationMessageFor(model => model.End)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfTrip, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateOfTrip)
+                @Html.ValidationMessageFor(model => model.DateOfTrip)
+            </div>
+        </div>
+
+       
+                <input type="checkbox" name="bedlinen" id="payt4" />
+            <label for="payt4"></label>&nbsp;<strong>Постільна білизна</strong>   
+        
+        <div class="checkboxFour">
+            
+            <input type="checkbox" name="tea" id="checkboxFourInput" />
+            <label for="checkboxFourInput"></label>  
+            </div>          
+            
+       
+
+        <img src="http://lopaem.ru/wp-content/themes/default/img/ico_catid_8.gif" title="Чай" />
+       
+            
+        
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Пошук" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="btn">
+    @if (ViewBag.Error == true)
+    {
+        <div style="background-color:red">
+            <span style="color:whitesmoke; border-bottom-style:groove; border-bottom-width:medium; font-family:'Book Antiqua'; text-align:center">
+                @ViewBag.NotFoundMessage
+            </span>
+        </div>
+    }
+</div> 

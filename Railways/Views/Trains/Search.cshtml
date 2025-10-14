@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Railways.Trains>
+
+@{
+    ViewBag.Title = "Результат пошуку";
+    Tickets t = (Tickets)Session["ticket"];
+}
+
+<h2>Результат пошуку</h2>
+<p style="text-align:justify">На дату @t.DateTrip.ToString("d")</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Route)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+   
+    
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Route)
+        </td>
+        <td>            
+            @Html.ActionLink("Перевірити наявність квитків","ShowCarriages", new { id = item.TrainID})
+        </td>
+    </tr>
+}
+
+</table>
